@@ -3,19 +3,24 @@ const express = require("express");
 const router = express.Router();
 
 const authenticate = require("../middleware/auth.middleware");
+const patientController = require("../controllers/patient.controller");
+
+router.post(
+    "/profile",
+    authenticate,
+    patientController.createProfile
+);
 
 router.get(
     "/profile",
     authenticate,
-    (req, res) => {
+    patientController.getProfile
+);
 
-        res.json({
-            success: true,
-            message: "Welcome to Patient Profile",
-            user: req.user
-        });
-
-    }
+router.put(
+    "/profile",
+    authenticate,
+    patientController.updateProfile
 );
 
 module.exports = router;
