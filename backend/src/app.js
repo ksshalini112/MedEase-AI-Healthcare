@@ -1,6 +1,7 @@
 const express = require("express");
 const healthRoutes = require("./routes/health.routes");
 const authRoutes = require("./routes/auth.routes");
+const patientRoutes = require("./routes/patient.routes");
 const app = express();
 
 // ==============================
@@ -21,6 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/health", healthRoutes);
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/patient", patientRoutes);
 
 // ==============================
 // Default Route
