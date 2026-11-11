@@ -1,0 +1,254 @@
+<div class="questions-page">
+
+  <!-- Header -->
+  <div class="assessment-header">
+
+    <button
+      class="back-btn"
+      type="button"
+      (click)="goBack()"
+      [disabled]="submitting"
+    >
+      ← Back
+    </button>
+
+    <div class="brand">
+      <div class="logo-circle">M</div>
+
+      <div>
+        <h1>MedEase AI</h1>
+        <p>AI Health Assessment</p>
+      </div>
+    </div>
+
+    <button
+      class="cancel-btn"
+      type="button"
+      (click)="cancel()"
+      [disabled]="submitting"
+    >
+      Cancel
+    </button>
+
+  </div>
+
+
+  <!-- Progress -->
+  <div class="progress-section">
+
+    <div class="progress-info">
+      <span>Assessment Progress</span>
+      <strong>Step 3 of 4</strong>
+    </div>
+
+    <div class="progress-bar">
+      <div class="progress-fill"></div>
+    </div>
+
+    <div class="steps">
+
+      <div class="step completed">
+        <span>✓</span>
+        <small>Medical Info</small>
+      </div>
+
+      <div class="step completed">
+        <span>✓</span>
+        <small>Symptoms</small>
+      </div>
+
+      <div class="step active">
+        <span>3</span>
+        <small>AI Questions</small>
+      </div>
+
+      <div class="step">
+        <span>4</span>
+        <small>Assessment</small>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- Main Card -->
+  <div class="content-card">
+
+    <!-- Loading -->
+    <div
+      class="loading-section"
+      *ngIf="loading"
+    >
+
+      <div class="loader"></div>
+
+      <h2>Preparing your questions...</h2>
+
+      <p>
+        MedEase AI is preparing personalized
+        follow-up questions based on your symptoms.
+      </p>
+
+    </div>
+
+
+    <!-- Error -->
+    <div
+      class="error-message"
+      *ngIf="errorMessage"
+    >
+      <span>⚠</span>
+      {{ errorMessage }}
+    </div>
+
+
+    <!-- Questions -->
+    <div
+      *ngIf="!loading && questions.length > 0"
+    >
+
+      <div class="title-section">
+
+        <div class="ai-icon">
+          ✨
+        </div>
+
+        <div>
+          <h2>AI Follow-up Questions</h2>
+
+          <p>
+            Based on your symptoms, MedEase AI
+            needs a little more information.
+          </p>
+        </div>
+
+      </div>
+
+
+      <!-- Question List -->
+      <div class="questions-list">
+
+        <div
+          class="question-card"
+          *ngFor="
+            let question of questions;
+            let i = index
+          "
+        >
+
+          <div class="question-number">
+            {{ i + 1 }}
+          </div>
+
+
+          <div class="question-content">
+
+            <label>
+              {{ question }}
+            </label>
+
+            <textarea
+              [(ngModel)]="answers[i]"
+              [placeholder]="
+                'Enter your answer...'
+              "
+              rows="3"
+              [disabled]="submitting"
+            ></textarea>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- Important Notice -->
+      <div class="notice">
+
+        <span class="notice-icon">ℹ</span>
+
+        <div>
+          <strong>Why are we asking?</strong>
+
+          <p>
+            Your answers help MedEase AI understand
+            your condition better and prepare a more
+            relevant health assessment for the doctor.
+          </p>
+        </div>
+
+      </div>
+
+
+      <!-- Submit -->
+      <div class="action-section">
+
+        <button
+          class="submit-btn"
+          type="button"
+          (click)="submitAnswers()"
+          [disabled]="submitting"
+        >
+
+          <span *ngIf="!submitting">
+            Complete AI Assessment →
+          </span>
+
+          <span *ngIf="submitting">
+            Analyzing your answers...
+          </span>
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- No Questions -->
+    <div
+      class="no-questions"
+      *ngIf="
+        !loading &&
+        !errorMessage &&
+        questions.length === 0
+      "
+    >
+
+      <div class="empty-icon">
+        ✓
+      </div>
+
+      <h2>No follow-up questions</h2>
+
+      <p>
+        MedEase AI did not require any additional
+        information for this assessment.
+      </p>
+
+      <button
+        class="submit-btn"
+        type="button"
+        (click)="submitAnswers()"
+      >
+        Continue →
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- Footer -->
+  <div class="security-footer">
+
+    <span>🔒</span>
+
+    Your health information is securely processed
+    by MedEase AI.
+
+  </div>
+
+</div>

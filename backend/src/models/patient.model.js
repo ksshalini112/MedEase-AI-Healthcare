@@ -30,6 +30,24 @@ const patientSchema = new mongoose.Schema(
         weight: {
             type: Number
         },
+        age: {
+    type: Number
+},
+
+gender: {
+    type: String,
+    enum: ["Male", "Female", "Other"]
+},
+
+pregnant: {
+    type: Boolean,
+    default: false
+},
+
+pregnancyWeeks: {
+    type: Number,
+    default: null
+},
 
         allergies: [{
             type: String

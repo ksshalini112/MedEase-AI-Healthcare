@@ -1,0 +1,127 @@
+<div class="login-page">
+
+  <!-- LEFT MEDICAL PANEL -->
+  <div class="medical-panel">
+
+    <div class="medical-content">
+
+      <div class="medical-logo">
+        <div class="logo-circle">M</div>
+        <span>MedEase AI</span>
+      </div>
+
+      <div class="medical-icon">
+        ✚
+      </div>
+
+      <h1>
+        Smarter Healthcare.<br>
+        <span>Better Care.</span>
+      </h1>
+
+      <p>
+        AI-powered healthcare assistance for smarter
+        decisions, clearer medical insights, and better
+        patient care.
+      </p>
+
+      <div class="medical-features">
+        <div>✓ AI Symptom Analysis</div>
+        <div>✓ Medical Report Analysis</div>
+        <div>✓ Doctor Consultation</div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- RIGHT LOGIN PANEL -->
+  <div class="login-panel">
+
+    <div class="login-box">
+
+      <div class="login-header">
+
+        <div class="mobile-logo">
+          <div class="logo-circle">M</div>
+        </div>
+
+        <h2>Welcome Back!</h2>
+
+        <p>
+          Sign in to continue to your MedEase AI account
+        </p>
+
+      </div>
+
+
+      <form (ngSubmit)="login()">
+
+        <div class="input-group">
+
+          <label>Email</label>
+
+          <input
+            type="email"
+            name="email"
+            [(ngModel)]="email"
+            placeholder="Enter your email"
+          >
+
+        </div>
+
+
+        <div class="input-group">
+
+          <label>Password</label>
+
+          <input
+            type="password"
+            name="password"
+            [(ngModel)]="password"
+            placeholder="Enter your password"
+          >
+
+        </div>
+
+
+        <p
+          class="error-message"
+          *ngIf="errorMessage"
+        >
+          {{ errorMessage }}
+        </p>
+
+
+        <button
+          type="submit"
+          class="login-btn"
+          [disabled]="loading"
+        >
+          {{ loading ? 'Signing in...' : 'Sign In' }}
+        </button>
+
+      </form>
+
+
+      <div class="divider">
+        <span>OR</span>
+      </div>
+
+
+      <p class="register">
+        Don't have an account?
+        <a routerLink="/register">Create an account</a>
+      </p>
+
+
+      <p class="secure-text">
+        🔒 Your healthcare information is securely protected
+      </p>
+
+    </div>
+
+  </div>
+
+</div>

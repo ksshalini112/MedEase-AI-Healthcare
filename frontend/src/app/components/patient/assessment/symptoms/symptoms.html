@@ -1,0 +1,281 @@
+<div class="symptoms-page">
+
+  <!-- Header -->
+
+  <div class="assessment-header">
+
+    <div class="brand">
+
+      <div class="logo-circle">
+        M
+      </div>
+
+      <div>
+        <h2>MedEase AI</h2>
+        <span>Health Assessment</span>
+      </div>
+
+    </div>
+
+    <button
+      class="cancel-btn"
+      (click)="cancel()"
+    >
+      Cancel
+    </button>
+
+  </div>
+
+
+  <!-- Progress -->
+
+  <div class="progress-container">
+
+    <div class="progress-step completed">
+      <span>✓</span>
+      <p>Medical Information</p>
+    </div>
+
+    <div class="progress-line active"></div>
+
+    <div class="progress-step active">
+      <span>2</span>
+      <p>Symptoms</p>
+    </div>
+
+    <div class="progress-line"></div>
+
+    <div class="progress-step">
+      <span>3</span>
+      <p>AI Questions</p>
+    </div>
+
+    <div class="progress-line"></div>
+
+    <div class="progress-step">
+      <span>4</span>
+      <p>Assessment</p>
+    </div>
+
+  </div>
+
+
+  <!-- Main Card -->
+
+  <div class="symptoms-card">
+
+    <div class="card-heading">
+
+      <span class="step-label">
+        STEP 2 OF 4
+      </span>
+
+      <h1>What are you experiencing?</h1>
+
+      <p>
+        Describe your current symptoms in your own words.
+        MedEase AI will use this information to understand
+        your condition and ask relevant follow-up questions.
+      </p>
+
+    </div>
+
+
+    <!-- Symptoms -->
+
+    <div class="section">
+
+      <label class="main-label">
+        Describe your symptoms <span>*</span>
+      </label>
+
+      <textarea
+        class="symptoms-input"
+        [(ngModel)]="symptoms"
+        placeholder="Example: I have fever, headache and cough for the past 3 days..."
+        rows="6"
+      ></textarea>
+
+      <small class="hint">
+        Include anything you think may be important.
+      </small>
+
+    </div>
+
+
+    <!-- Duration -->
+
+    <div class="section">
+
+      <label class="main-label">
+        How long have you had these symptoms? <span>*</span>
+      </label>
+
+      <div class="option-grid">
+
+        <button
+          type="button"
+          [class.selected]="duration === 'Today'"
+          (click)="duration = 'Today'"
+        >
+          Today
+        </button>
+
+        <button
+          type="button"
+          [class.selected]="duration === '1-3 days'"
+          (click)="duration = '1-3 days'"
+        >
+          1–3 days
+        </button>
+
+        <button
+          type="button"
+          [class.selected]="duration === '4-7 days'"
+          (click)="duration = '4-7 days'"
+        >
+          4–7 days
+        </button>
+
+        <button
+          type="button"
+          [class.selected]="duration === '1-2 weeks'"
+          (click)="duration = '1-2 weeks'"
+        >
+          1–2 weeks
+        </button>
+
+        <button
+          type="button"
+          [class.selected]="duration === 'More than 2 weeks'"
+          (click)="duration = 'More than 2 weeks'"
+        >
+          More than 2 weeks
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- Severity -->
+
+    <div class="section">
+
+      <label class="main-label">
+        How severe are your symptoms? <span>*</span>
+      </label>
+
+      <div class="severity-options">
+
+        <button
+          type="button"
+          class="severity-option mild"
+          [class.selected]="severity === 'Mild'"
+          (click)="severity = 'Mild'"
+        >
+          <strong>Mild</strong>
+          <span>Manageable discomfort</span>
+        </button>
+
+        <button
+          type="button"
+          class="severity-option moderate"
+          [class.selected]="severity === 'Moderate'"
+          (click)="severity = 'Moderate'"
+        >
+          <strong>Moderate</strong>
+          <span>Affects daily activities</span>
+        </button>
+
+        <button
+          type="button"
+          class="severity-option severe"
+          [class.selected]="severity === 'Severe'"
+          (click)="severity = 'Severe'"
+        >
+          <strong>Severe</strong>
+          <span>Very difficult to manage</span>
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- Additional Information -->
+
+    <div class="section">
+
+      <label class="main-label">
+        Anything else you'd like us to know?
+      </label>
+
+      <textarea
+        class="additional-input"
+        [(ngModel)]="additionalInfo"
+        placeholder="Example: I took Paracetamol and it helped temporarily..."
+        rows="4"
+      ></textarea>
+
+      <small class="hint">
+        This is optional.
+      </small>
+
+    </div>
+
+
+    <!-- Notice -->
+
+    <div class="ai-notice">
+
+      <span>🤖</span>
+
+      <div>
+        <strong>What happens next?</strong>
+
+        <p>
+          MedEase AI will analyze your symptoms and
+          generate personalized follow-up questions
+          based on what you've told us.
+        </p>
+      </div>
+
+    </div>
+
+<div
+  class="error-message"
+  *ngIf="errorMessage"
+>
+  {{ errorMessage }}
+</div>
+    <!-- Actions -->
+
+    <div class="form-actions">
+
+      <button
+        class="back-btn"
+        (click)="goBack()"
+      >
+        ← Back
+      </button>
+
+     <button
+  class="continue-btn"
+  (click)="continueToQuestions()"
+  [disabled]="loading"
+>
+  <span *ngIf="!loading">
+    Continue →
+  </span>
+
+  <span *ngIf="loading">
+    Analyzing...
+  </span>
+</button>
+
+    </div>
+
+  </div>
+
+</div>

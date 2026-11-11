@@ -1,0 +1,169 @@
+<div class="doctor-dashboard">
+
+  <!-- Header -->
+  <div class="dashboard-header">
+    <div>
+      <h1>Doctor Dashboard</h1>
+      <p>Patient assessment and consultation queue</p>
+    </div>
+
+    <button class="refresh-btn" (click)="loadDashboard()">
+      ↻ Refresh
+    </button>
+  </div>
+
+  <!-- Loading -->
+  <div class="loading" *ngIf="loading">
+    Loading patient queue...
+  </div>
+
+  <!-- Error -->
+  <div class="error" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="!loading && dashboardData">
+
+    <!-- Statistics -->
+    <div class="statistics">
+
+      <div class="stat-card critical">
+        <span>Critical</span>
+        <strong>{{ dashboardData.statistics.critical }}</strong>
+      </div>
+
+      <div class="stat-card high">
+        <span>High</span>
+        <strong>{{ dashboardData.statistics.high }}</strong>
+      </div>
+
+      <div class="stat-card medium">
+        <span>Medium</span>
+        <strong>{{ dashboardData.statistics.medium }}</strong>
+      </div>
+
+      <div class="stat-card low">
+        <span>Low</span>
+        <strong>{{ dashboardData.statistics.low }}</strong>
+      </div>
+
+      <div class="stat-card total">
+        <span>Total Waiting</span>
+        <strong>{{ dashboardData.statistics.totalWaiting }}</strong>
+      </div>
+
+    </div>
+
+    <!-- Patient Table -->
+    <div class="patient-section">
+
+      <div class="section-header">
+        <div>
+          <h2>Patient Queue</h2>
+          <p>Patients waiting for doctor consultation</p>
+        </div>
+
+        <input
+          type="text"
+          class="search-box"
+          placeholder="Search patient..."
+          [(ngModel)]="searchText"
+        />
+      </div>
+
+      <div class="table-wrapper">
+
+        <table>
+
+          <thead>
+            <tr>
+              <th>Priority</th>
+              <th>Patient</th>
+              <th>Age</th>
+              <th>Gender</th>
+              <th>Symptoms</th>
+              <th>Severity</th>
+              <th>Waiting</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            <tr *ngFor="let patient of filteredPatients">
+
+              <td>
+                <span
+                  class="priority-badge"
+                  [ngClass]="patient.priority.toLowerCase()"
+                >
+                  {{ patient.priority }}
+                </span>
+              </td>
+
+              <td>
+                <div class="patient-name">
+                  <strong>{{ patient.name }}</strong>
+                  <small>{{ patient.email }}</small>
+                </div>
+              </td>
+
+              <td>
+                {{ patient.age || '-' }}
+              </td>
+
+              <td>
+                {{ patient.gender || '-' }}
+              </td>
+
+              <td class="symptoms">
+                {{ patient.symptoms }}
+              </td>
+
+              <td>
+                <span class="severity">
+                  {{ patient.severity }}
+                </span>
+              </td>
+
+              <td>
+                {{ patient.waitingTime }}
+              </td>
+
+<td class="action-buttons">
+
+  <button
+    class="view-btn"
+    (click)="viewPatient(patient)"
+  >
+    View
+  </button>
+
+  <button
+    class="complete-btn"
+    (click)="completeConsultation(patient)"
+  >
+    Complete
+  </button>
+
+</td>
+
+            </tr>
+
+            <tr *ngIf="filteredPatients.length === 0">
+              <td colspan="8" class="no-data">
+                No patients found.
+              </td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

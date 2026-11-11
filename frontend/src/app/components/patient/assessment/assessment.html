@@ -1,0 +1,308 @@
+<div class="assessment-page">
+
+  <!-- Header -->
+
+  <div class="assessment-header">
+
+    <div class="brand">
+
+      <div class="logo-circle">
+        M
+      </div>
+
+      <div>
+        <h2>MedEase AI</h2>
+        <span>Health Assessment</span>
+      </div>
+
+    </div>
+
+    <button
+      class="cancel-btn"
+      (click)="cancel()"
+    >
+      Cancel
+    </button>
+
+  </div>
+
+
+  <!-- Progress -->
+
+  <div class="progress-container">
+
+    <div class="progress-step active">
+      <span>1</span>
+      <p>Medical Information</p>
+    </div>
+
+    <div class="progress-line"></div>
+
+    <div class="progress-step">
+      <span>2</span>
+      <p>Symptoms</p>
+    </div>
+
+    <div class="progress-line"></div>
+
+    <div class="progress-step">
+      <span>3</span>
+      <p>AI Questions</p>
+    </div>
+
+    <div class="progress-line"></div>
+
+    <div class="progress-step">
+      <span>4</span>
+      <p>Assessment</p>
+    </div>
+
+  </div>
+
+
+  <!-- Main Card -->
+
+  <div class="assessment-card">
+
+    <div class="card-heading">
+
+      <span class="step-label">
+        STEP 1 OF 4
+      </span>
+
+      <h1>Tell us about yourself</h1>
+
+      <p>
+        This information helps MedEase AI understand
+        your health background and provide a more
+        relevant assessment.
+      </p>
+
+    </div>
+
+
+    <!-- Basic Information -->
+
+    <div class="section">
+
+      <h3>Basic Information</h3>
+
+      <div class="form-grid">
+
+        <div class="input-group">
+
+          <label>
+            Age <span>*</span>
+          </label>
+
+          <input
+            type="number"
+            [(ngModel)]="age"
+            placeholder="Enter your age"
+            min="1"
+            max="120"
+          />
+
+        </div>
+
+
+        <div class="input-group">
+
+          <label>
+            Gender <span>*</span>
+          </label>
+
+          <select [(ngModel)]="gender">
+
+            <option value="">
+              Select gender
+            </option>
+
+            <option value="Male">
+              Male
+            </option>
+
+            <option value="Female">
+              Female
+            </option>
+
+            <option value="Other">
+              Other
+            </option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Pregnancy -->
+
+    <div
+      class="section pregnancy-section"
+      *ngIf="gender === 'Female'"
+    >
+
+      <h3>Pregnancy Information</h3>
+
+      <div class="pregnancy-question">
+
+        <label>
+          Are you currently pregnant?
+        </label>
+
+        <div class="radio-group">
+
+          <label class="radio-option">
+
+            <input
+              type="radio"
+              name="pregnant"
+              [value]="true"
+              [(ngModel)]="pregnant"
+            />
+
+            Yes
+
+          </label>
+
+
+          <label class="radio-option">
+
+            <input
+              type="radio"
+              name="pregnant"
+              [value]="false"
+              [(ngModel)]="pregnant"
+            />
+
+            No
+
+          </label>
+
+        </div>
+
+      </div>
+
+
+      <div
+        class="input-group"
+        *ngIf="pregnant"
+      >
+
+        <label>
+          Pregnancy weeks <span>*</span>
+        </label>
+
+        <input
+          type="number"
+          [(ngModel)]="pregnancyWeeks"
+          placeholder="e.g. 24"
+          min="1"
+          max="45"
+        />
+
+      </div>
+
+    </div>
+
+
+    <!-- Medical History -->
+
+    <div class="section">
+
+      <h3>Medical History</h3>
+
+      <p class="section-description">
+        You can leave these blank if they don't apply to you.
+      </p>
+
+
+      <div class="input-group">
+
+        <label>
+          Allergies
+        </label>
+
+        <textarea
+          [(ngModel)]="allergies"
+          placeholder="Example: Penicillin, dust, peanuts"
+          rows="3"
+        ></textarea>
+
+      </div>
+
+
+      <div class="input-group">
+
+        <label>
+          Chronic / Previous Conditions
+        </label>
+
+        <textarea
+          [(ngModel)]="chronicDiseases"
+          placeholder="Example: Asthma, diabetes, thyroid"
+          rows="3"
+        ></textarea>
+
+      </div>
+
+
+      <div class="input-group">
+
+        <label>
+          Current Medicines
+        </label>
+
+        <textarea
+          [(ngModel)]="currentMedicines"
+          placeholder="Example: Paracetamol, Metformin"
+          rows="3"
+        ></textarea>
+
+      </div>
+
+    </div>
+
+
+    <!-- Privacy Notice -->
+
+    <div class="privacy-note">
+
+      <span>🔒</span>
+
+      <p>
+        Your health information is used only to
+        personalize your MedEase AI assessment.
+      </p>
+
+    </div>
+
+
+    <!-- Actions -->
+
+    <div class="form-actions">
+
+      <button
+        class="back-btn"
+        (click)="cancel()"
+      >
+        ← Back
+      </button>
+
+      <button
+        class="continue-btn"
+        (click)="continueToSymptoms()"
+      >
+        Continue
+        <span>→</span>
+      </button>
+
+    </div>
+
+  </div>
+
+</div>

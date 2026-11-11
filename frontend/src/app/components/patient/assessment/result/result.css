@@ -1,0 +1,795 @@
+/* =====================================================
+   PAGE
+===================================================== */
+
+.result-page {
+    min-height: 100vh;
+    background: #f6f8fb;
+    padding: 40px 20px 70px;
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+    color: #172033;
+}
+
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.result-container {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.eyebrow {
+    display: block;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    color: #64748b;
+}
+
+.page-header h1 {
+    margin: 0;
+    font-size: 36px;
+    line-height: 1.15;
+    font-weight: 800;
+}
+
+.page-header p {
+    margin: 12px 0 0;
+    color: #64748b;
+    font-size: 16px;
+}
+
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+.primary-button,
+.secondary-button {
+    border: 0;
+    border-radius: 10px;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.primary-button {
+    background: #2563eb;
+    color: white;
+}
+
+.primary-button:hover {
+    transform: translateY(-1px);
+    opacity: 0.92;
+}
+
+.secondary-button {
+    background: white;
+    color: #334155;
+    border: 1px solid #dbe1ea;
+}
+
+.secondary-button:hover {
+    background: #f8fafc;
+}
+
+
+/* =====================================================
+   URGENT BANNER
+===================================================== */
+
+.urgent-banner {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 18px 20px;
+    border-radius: 14px;
+    margin-bottom: 25px;
+    background: #fff4f4;
+    border: 1px solid #fecaca;
+}
+
+.urgent-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #dc2626;
+    color: white;
+    font-weight: 800;
+    flex-shrink: 0;
+}
+
+.urgent-banner strong {
+    color: #991b1b;
+}
+
+.urgent-banner p {
+    margin: 5px 0 0;
+    color: #7f1d1d;
+}
+
+
+/* =====================================================
+   OVERVIEW
+===================================================== */
+
+.overview-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 25px;
+}
+
+.overview-card {
+    background: white;
+    border: 1px solid #e5eaf1;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
+}
+
+.card-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #64748b;
+    margin-bottom: 8px;
+}
+
+.overview-card strong {
+    font-size: 20px;
+    color: #172033;
+}
+
+.overview-card strong.high {
+    color: #dc2626;
+}
+
+.overview-card strong.critical {
+    color: #991b1b;
+}
+
+.overview-card strong.medium {
+    color: #d97706;
+}
+
+.overview-card strong.low {
+    color: #15803d;
+}
+
+
+/* =====================================================
+   SECTION CARD
+===================================================== */
+
+.section-card {
+    background: white;
+    border: 1px solid #e5eaf1;
+    border-radius: 18px;
+    padding: 28px;
+    margin-bottom: 24px;
+    box-shadow: 0 5px 22px rgba(15, 23, 42, 0.04);
+}
+
+
+/* =====================================================
+   SECTION HEADING
+===================================================== */
+
+.section-heading {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    margin-bottom: 22px;
+}
+
+.section-number {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: #eef2ff;
+    color: #4338ca;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 800;
+    flex-shrink: 0;
+}
+
+.section-heading h2 {
+    margin: 0;
+    font-size: 21px;
+}
+
+.section-heading p {
+    margin: 5px 0 0;
+    color: #64748b;
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   SUMMARY
+===================================================== */
+
+.summary-box {
+    background: #f8fafc;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    padding: 20px;
+    line-height: 1.7;
+    white-space: pre-line;
+}
+
+
+/* =====================================================
+   CONDITIONS
+===================================================== */
+
+.condition-list {
+    display: grid;
+    gap: 12px;
+}
+
+.condition-card {
+    padding: 17px;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    background: #fafbfc;
+}
+
+.condition-card h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.condition-card p {
+    margin: 7px 0 0;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   TEST LIST
+===================================================== */
+
+.test-list {
+    display: grid;
+    gap: 10px;
+}
+
+.test-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 11px;
+    background: #fafbfc;
+    font-weight: 600;
+}
+
+.check {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #dcfce7;
+    color: #15803d;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+
+/* =====================================================
+   REPORT CARD
+===================================================== */
+
+.report-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 18px;
+}
+
+.report-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.report-type {
+    display: block;
+    color: #64748b;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.report-header h3 {
+    margin: 5px 0 0;
+    font-size: 17px;
+}
+
+.report-severity {
+    padding: 7px 12px;
+    border-radius: 20px;
+    background: #eef2ff;
+    color: #4338ca;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+
+/* =====================================================
+   PATIENT MESSAGE
+===================================================== */
+
+.patient-message {
+    padding: 17px 20px;
+    color: #475569;
+    line-height: 1.6;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+
+/* =====================================================
+   VALUES
+===================================================== */
+
+.values-list {
+    padding: 15px;
+}
+
+.value-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 13px;
+    padding: 18px;
+    margin-bottom: 12px;
+    background: white;
+}
+
+.value-card:last-child {
+    margin-bottom: 0;
+}
+
+.value-card.abnormal {
+    background: #fffafa;
+    border-color: #fecaca;
+}
+
+.value-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.value-header h4 {
+    margin: 0 0 6px;
+    font-size: 15px;
+}
+
+.reference {
+    color: #64748b;
+    font-size: 12px;
+}
+
+.result-value {
+    text-align: right;
+}
+
+.result-value strong {
+    display: block;
+    font-size: 17px;
+}
+
+.result-value small {
+    font-size: 12px;
+    font-weight: 500;
+    color: #64748b;
+}
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+.status-badge {
+    display: inline-block;
+    margin-top: 7px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.status-badge.high {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.status-badge.low {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.status-badge.normal {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.status-badge.review {
+    background: #e2e8f0;
+    color: #475569;
+}
+
+
+/* =====================================================
+   EXPLANATION
+===================================================== */
+
+.explanation {
+    margin-top: 18px;
+    padding-top: 17px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.explanation-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 17px;
+}
+
+.explanation-row:last-child {
+    margin-bottom: 0;
+}
+
+.explanation-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #eff6ff;
+    color: #2563eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    flex-shrink: 0;
+}
+
+.explanation-row strong {
+    font-size: 13px;
+}
+
+.explanation-row p {
+    margin: 5px 0 0;
+    color: #475569;
+    line-height: 1.6;
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   NORMAL MESSAGE
+===================================================== */
+
+.normal-message {
+    margin-top: 15px;
+    padding: 12px 14px;
+    border-radius: 9px;
+    background: #f0fdf4;
+    color: #166534;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   EMPTY VALUES
+===================================================== */
+
+.empty-values {
+    padding: 20px;
+    color: #64748b;
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   FINDINGS
+===================================================== */
+
+.finding-list {
+    display: grid;
+    gap: 10px;
+}
+
+.finding-item {
+    padding: 14px 16px;
+    border-radius: 10px;
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    line-height: 1.5;
+}
+
+.finding-item span {
+    color: #2563eb;
+    font-weight: 800;
+    margin-right: 6px;
+}
+
+
+/* =====================================================
+   COMBINED ASSESSMENT
+===================================================== */
+
+.combined-text {
+    padding: 20px;
+    background: #f8fafc;
+    border-radius: 12px;
+    white-space: pre-line;
+    line-height: 1.75;
+    color: #334155;
+    border: 1px solid #e5e7eb;
+}
+
+
+/* =====================================================
+   FINAL CONCLUSION
+===================================================== */
+
+.conclusion-card {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 18px;
+    padding: 25px;
+    margin-bottom: 24px;
+}
+
+.conclusion-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #2563eb;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    flex-shrink: 0;
+}
+
+.conclusion-card h2 {
+    margin: 0 0 9px;
+    font-size: 21px;
+}
+
+.conclusion-card p {
+    margin: 0;
+    color: #334155;
+    line-height: 1.7;
+}
+
+
+/* =====================================================
+   DISCLAIMER
+===================================================== */
+
+.disclaimer {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.disclaimer strong {
+    font-size: 13px;
+}
+
+.disclaimer p {
+    margin: 7px 0 0;
+    color: #64748b;
+    line-height: 1.6;
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   ACTIONS
+===================================================== */
+
+.action-row {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.loading-container {
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.loader {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 4px solid #e2e8f0;
+    border-top-color: #2563eb;
+    animation: spin 0.8s linear infinite;
+}
+
+.loading-container h2 {
+    margin: 20px 0 6px;
+}
+
+.loading-container p {
+    color: #64748b;
+}
+
+@keyframes spin {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* =====================================================
+   ERROR
+===================================================== */
+
+.error-container {
+    max-width: 500px;
+    margin: 100px auto;
+    text-align: center;
+    background: white;
+    padding: 35px;
+    border-radius: 18px;
+    border: 1px solid #e5e7eb;
+}
+
+.error-icon {
+    width: 45px;
+    height: 45px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fee2e2;
+    color: #b91c1c;
+    font-weight: 800;
+}
+
+.error-container h2 {
+    margin: 0;
+}
+
+.error-container p {
+    color: #64748b;
+    line-height: 1.6;
+    margin: 10px 0 22px;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .overview-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .result-page {
+        padding: 25px 12px 50px;
+    }
+
+    .page-header {
+        flex-direction: column;
+    }
+
+    .page-header h1 {
+        font-size: 28px;
+    }
+
+    .overview-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-card {
+        padding: 18px;
+    }
+
+    .report-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .value-header {
+        flex-direction: column;
+    }
+
+    .result-value {
+        text-align: left;
+    }
+
+    .conclusion-card {
+        flex-direction: column;
+    }
+
+    .action-row {
+        flex-direction: column;
+    }
+
+    .action-row button {
+        width: 100%;
+    }
+
+}

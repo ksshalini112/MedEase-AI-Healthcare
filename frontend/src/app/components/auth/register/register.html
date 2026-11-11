@@ -1,0 +1,307 @@
+<div class="register-page">
+
+  <!-- Left Medical Section -->
+  <div class="medical-section">
+
+    <div class="brand">
+      <div class="logo-circle">M</div>
+
+      <div>
+        <h1>MedEase AI</h1>
+        <p>AI-Powered Healthcare</p>
+      </div>
+    </div>
+
+    <div class="medical-content">
+
+      <div class="medical-icon">✚</div>
+
+      <h2>Your Health.<br>Our Intelligence.</h2>
+
+      <p>
+        Create your MedEase AI account and get access to
+        intelligent healthcare assistance, medical reports,
+        and personalized health insights.
+      </p>
+
+      <div class="features">
+
+        <div class="feature">
+          <span>✓</span>
+          <p>AI-powered health assistance</p>
+        </div>
+
+        <div class="feature">
+          <span>✓</span>
+          <p>Smart medical report analysis</p>
+        </div>
+
+        <div class="feature">
+          <span>✓</span>
+          <p>Secure patient information</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- Register Form Section -->
+  <div class="register-section">
+
+    <div class="register-card">
+
+      <div class="register-header">
+
+        <h2>Create Account</h2>
+
+        <p>
+          Join MedEase AI and take control of your healthcare
+        </p>
+
+      </div>
+
+
+      <!-- Error Message -->
+      <div
+        class="message error"
+        *ngIf="errorMessage"
+      >
+        {{ errorMessage }}
+      </div>
+
+
+      <!-- Success Message -->
+      <div
+        class="message success"
+        *ngIf="successMessage"
+      >
+        {{ successMessage }}
+      </div>
+
+
+      <form (ngSubmit)="register()">
+
+
+        <!-- Name -->
+        <div class="input-group">
+
+          <label>Full Name</label>
+
+          <div class="input-wrapper">
+
+            <span class="input-icon">👤</span>
+
+            <input
+              type="text"
+              name="name"
+              [(ngModel)]="name"
+              placeholder="Enter your full name"
+              autocomplete="name"
+            >
+
+          </div>
+
+        </div>
+
+
+        <!-- Email -->
+        <div class="input-group">
+
+          <label>Email Address</label>
+
+          <div class="input-wrapper">
+
+            <span class="input-icon">✉</span>
+
+            <input
+              type="email"
+              name="email"
+              [(ngModel)]="email"
+              placeholder="Enter your email"
+              autocomplete="email"
+            >
+
+          </div>
+
+        </div>
+
+
+        <!-- Phone -->
+        <div class="input-group">
+
+          <label>Phone Number</label>
+
+          <div class="input-wrapper">
+
+            <span class="input-icon">📱</span>
+
+            <input
+              type="tel"
+              name="phone"
+              [(ngModel)]="phone"
+              placeholder="Enter your phone number"
+              autocomplete="tel"
+            >
+
+          </div>
+
+        </div>
+
+
+        <!-- Password -->
+        <div class="input-group">
+
+          <label>Password</label>
+
+          <div class="input-wrapper">
+
+            <span class="input-icon">🔒</span>
+
+            <input
+              type="password"
+              name="password"
+              [(ngModel)]="password"
+              placeholder="Create a password"
+              autocomplete="new-password"
+            >
+
+          </div>
+
+        </div>
+
+
+        <!-- Confirm Password -->
+        <div class="input-group">
+
+          <label>Confirm Password</label>
+
+          <div class="input-wrapper">
+
+            <span class="input-icon">🔒</span>
+
+            <input
+              type="password"
+              name="confirmPassword"
+              [(ngModel)]="confirmPassword"
+              placeholder="Confirm your password"
+              autocomplete="new-password"
+            >
+
+          </div>
+
+        </div>
+
+
+        <!-- Role -->
+        <div class="role-section">
+
+          <label class="role-label">
+            I am registering as
+          </label>
+
+          <div class="role-options">
+
+
+            <!-- Patient -->
+            <button
+              type="button"
+              class="role-card"
+              [class.selected]="role === 'patient'"
+              (click)="role = 'patient'"
+            >
+
+              <div class="role-icon patient-icon">
+                👤
+              </div>
+
+              <div class="role-info">
+
+                <strong>Patient</strong>
+
+                <span>
+                  Access healthcare services
+                </span>
+
+              </div>
+
+              <div class="radio-circle">
+                <span *ngIf="role === 'patient'"></span>
+              </div>
+
+            </button>
+
+
+            <!-- Doctor -->
+            <button
+              type="button"
+              class="role-card"
+              [class.selected]="role === 'doctor'"
+              (click)="role = 'doctor'"
+            >
+
+              <div class="role-icon doctor-icon">
+                🩺
+              </div>
+
+              <div class="role-info">
+
+                <strong>Doctor</strong>
+
+                <span>
+                  Manage and consult patients
+                </span>
+
+              </div>
+
+              <div class="radio-circle">
+                <span *ngIf="role === 'doctor'"></span>
+              </div>
+
+            </button>
+
+
+          </div>
+
+        </div>
+
+
+        <!-- Register Button -->
+        <button
+          type="submit"
+          class="register-btn"
+          [disabled]="loading"
+        >
+
+          <span *ngIf="!loading">
+            Create Account
+          </span>
+
+          <span *ngIf="loading">
+            Creating Account...
+          </span>
+
+        </button>
+
+
+      </form>
+
+
+      <!-- Login -->
+      <p class="login-text">
+
+        Already have an account?
+
+        <a routerLink="/login">
+          Sign in
+        </a>
+
+      </p>
+
+    </div>
+
+  </div>
+
+</div>

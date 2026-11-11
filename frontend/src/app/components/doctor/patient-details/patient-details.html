@@ -1,0 +1,443 @@
+<div class="page">
+
+  <!-- Loading -->
+  <div *ngIf="loading" class="loading">
+    Loading patient details...
+  </div>
+
+
+  <!-- Error -->
+  <div *ngIf="!loading && errorMessage" class="error">
+    {{ errorMessage }}
+
+    <button (click)="goBack()">
+      Back to Dashboard
+    </button>
+  </div>
+
+
+  <!-- Patient Details -->
+  <div
+    *ngIf="!loading && patientData"
+    class="content"
+  >
+
+    <!-- Header -->
+    <div class="header">
+
+      <div>
+
+        <button
+          class="back-btn"
+          (click)="goBack()"
+        >
+          ← Back
+        </button>
+
+        <h1>Patient Consultation</h1>
+
+        <p>
+          Doctor review and patient medical information
+        </p>
+
+      </div>
+
+      <div class="status-area">
+
+        <span
+          class="priority"
+          [ngClass]="patientData.consultation.priority?.toLowerCase()"
+        >
+          {{ patientData.consultation.priority }}
+        </span>
+
+        <span class="severity">
+          {{ patientData.consultation.severity }}
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <!-- Patient Information -->
+    <div class="card">
+
+      <h2>👤 Patient Information</h2>
+
+      <div class="grid">
+
+        <div>
+          <label>Name</label>
+          <strong>
+            {{ patientData.patient.name }}
+          </strong>
+        </div>
+
+        <div>
+          <label>Email</label>
+          <strong>
+            {{ patientData.patient.email }}
+          </strong>
+        </div>
+
+        <div>
+          <label>Phone</label>
+          <strong>
+            {{ patientData.patient.phone || '-' }}
+          </strong>
+        </div>
+
+        <div>
+          <label>Age</label>
+          <strong>
+            {{ patientData.patient.profile?.age || '-' }}
+          </strong>
+        </div>
+
+        <div>
+          <label>Gender</label>
+          <strong>
+            {{ patientData.patient.profile?.gender || '-' }}
+          </strong>
+        </div>
+
+        <div>
+          <label>Blood Group</label>
+          <strong>
+            {{ patientData.patient.profile?.bloodGroup || '-' }}
+          </strong>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Pregnancy -->
+    <div
+      class="card"
+      *ngIf="patientData.patient.profile?.pregnant"
+    >
+
+      <h2>🤰 Pregnancy Information</h2>
+
+      <div class="pregnancy">
+
+        <strong>
+          Pregnant
+        </strong>
+
+        <span>
+          {{ patientData.patient.profile?.pregnancyWeeks }}
+          weeks
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <!-- Medical History -->
+    <div class="card">
+
+      <h2>🏥 Medical History</h2>
+
+      <div class="history-grid">
+
+        <div>
+
+          <label>Allergies</label>
+
+          <p>
+            {{
+              patientData.patient.profile?.allergies?.join(', ')
+              || 'None reported'
+            }}
+          </p>
+
+        </div>
+
+        <div>
+
+          <label>Chronic Diseases</label>
+
+          <p>
+            {{
+              patientData.patient.profile?.chronicDiseases?.join(', ')
+              || 'None reported'
+            }}
+          </p>
+
+        </div>
+
+        <div>
+
+          <label>Current Medicines</label>
+
+          <p>
+            {{
+              patientData.patient.profile?.currentMedicines?.join(', ')
+              || 'None reported'
+            }}
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Symptoms -->
+    <div class="card">
+
+      <h2>🩺 Symptoms</h2>
+
+      <div class="symptoms">
+
+        <span
+          *ngFor="
+            let symptom
+            of patientData.consultation.extractedSymptoms
+          "
+        >
+          {{ symptom }}
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <!-- Original Message -->
+    <div class="card">
+
+      <h2>💬 Patient Complaint</h2>
+
+      <p class="complaint">
+        {{ patientData.consultation.originalMessage }}
+      </p>
+
+    </div>
+
+
+    <!-- Patient Answers -->
+    <div class="card">
+
+      <h2>📝 Patient Answers</h2>
+
+      <div
+        class="answer"
+        *ngFor="
+          let item
+          of patientData.consultation.patientAnswers
+        "
+      >
+
+        <strong>
+          {{ item.question }}
+        </strong>
+
+        <p>
+          {{ item.answer }}
+        </p>
+
+      </div>
+
+      <p
+        *ngIf="
+          !patientData.consultation.patientAnswers?.length
+        "
+      >
+        No follow-up answers available.
+      </p>
+
+    </div>
+
+
+    <!-- Clinical Summary -->
+    <div class="card summary-card">
+
+      <h2>🧠 AI Clinical Summary</h2>
+
+      <p>
+        {{ patientData.consultation.clinicalSummary }}
+      </p>
+
+    </div>
+
+
+    <!-- Possible Conditions -->
+    <div class="card">
+
+      <h2>🔎 Possible Conditions</h2>
+
+      <div
+        class="condition"
+        *ngFor="
+          let condition
+          of patientData.consultation.possibleConditions
+        "
+      >
+
+        <span>
+          {{ condition.name }}
+        </span>
+
+        <strong>
+          {{ condition.confidence }}%
+        </strong>
+
+      </div>
+
+      <p
+        *ngIf="
+          !patientData.consultation.possibleConditions?.length
+        "
+      >
+        No suspected conditions.
+      </p>
+
+    </div>
+
+
+    <!-- Recommended Tests -->
+    <div class="card">
+
+      <h2>🧪 Recommended Tests</h2>
+
+      <ul>
+
+        <li
+          *ngFor="
+            let test
+            of patientData.consultation.recommendedTests
+          "
+        >
+          {{ test }}
+        </li>
+
+      </ul>
+
+      <p
+        *ngIf="
+          !patientData.consultation.recommendedTests?.length
+        "
+      >
+        No additional tests recommended.
+      </p>
+
+    </div>
+
+
+    <!-- Uploaded Report -->
+    <div
+      class="card"
+      *ngIf="patientData.report"
+    >
+
+      <h2>📄 Uploaded Report</h2>
+
+      <div class="report-info">
+
+        <div>
+
+          <label>File</label>
+
+          <strong>
+            {{ patientData.report.originalFileName }}
+          </strong>
+
+        </div>
+
+        <div>
+
+          <label>Status</label>
+
+          <strong>
+            {{ patientData.report.status }}
+          </strong>
+
+        </div>
+
+      </div>
+
+      <div
+        *ngIf="patientData.report.aiAnalysis"
+        class="report-analysis"
+      >
+
+        <h3>
+          AI Report Analysis
+        </h3>
+
+        <p>
+          {{
+            patientData.report.aiAnalysis.summary
+            || 'Report analyzed successfully.'
+          }}
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- Final Assessment -->
+    <div class="card final-card">
+
+      <h2>📋 Final Assessment</h2>
+
+      <div class="final-grid">
+
+        <div>
+
+          <label>Severity</label>
+
+          <strong>
+            {{ patientData.consultation.finalSeverity || '-' }}
+          </strong>
+
+        </div>
+
+        <div>
+
+          <label>Priority</label>
+
+          <strong>
+            {{ patientData.consultation.finalPriority || '-' }}
+          </strong>
+
+        </div>
+
+        <div>
+
+          <label>Status</label>
+
+          <strong>
+            {{ patientData.consultation.status }}
+          </strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Bottom -->
+    <div class="bottom-actions">
+
+      <button
+        class="back-btn large"
+        (click)="goBack()"
+      >
+        ← Back to Patient Queue
+      </button>
+
+    </div>
+
+  </div>
+
+</div>

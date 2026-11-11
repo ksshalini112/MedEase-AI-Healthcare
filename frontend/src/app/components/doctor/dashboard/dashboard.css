@@ -1,0 +1,380 @@
+/* ================================
+   Doctor Dashboard
+================================ */
+
+.doctor-dashboard {
+  min-height: 100vh;
+  background: #f5f8fc;
+  padding: 30px 40px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #1e293b;
+}
+
+/* ================================
+   Header
+================================ */
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.dashboard-header h1 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 700;
+  color: #123b63;
+}
+
+.dashboard-header p {
+  margin: 7px 0 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.refresh-btn {
+  border: none;
+  background: #1769aa;
+  color: white;
+  padding: 11px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.refresh-btn:hover {
+  background: #125789;
+}
+
+/* ================================
+   Statistics
+================================ */
+
+.statistics {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  border-left: 5px solid;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06);
+}
+
+.stat-card span {
+  display: block;
+  color: #64748b;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.stat-card strong {
+  font-size: 28px;
+}
+
+.stat-card.critical {
+  border-color: #dc2626;
+}
+
+.stat-card.critical strong {
+  color: #dc2626;
+}
+
+.stat-card.high {
+  border-color: #ea580c;
+}
+
+.stat-card.high strong {
+  color: #ea580c;
+}
+
+.stat-card.medium {
+  border-color: #eab308;
+}
+
+.stat-card.medium strong {
+  color: #ca8a04;
+}
+
+.stat-card.low {
+  border-color: #16a34a;
+}
+
+.stat-card.low strong {
+  color: #16a34a;
+}
+
+.stat-card.total {
+  border-color: #1769aa;
+}
+
+.stat-card.total strong {
+  color: #1769aa;
+}
+
+/* ================================
+   Patient Section
+================================ */
+
+.patient-section {
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.06);
+  overflow: hidden;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 24px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.section-header h2 {
+  margin: 0;
+  color: #123b63;
+  font-size: 20px;
+}
+
+.section-header p {
+  margin: 5px 0 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.search-box {
+  width: 260px;
+  padding: 11px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+}
+
+.search-box:focus {
+  border-color: #1769aa;
+  box-shadow: 0 0 0 3px rgba(23, 105, 170, 0.1);
+}
+
+/* ================================
+   Table
+================================ */
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1050px;
+}
+
+thead {
+  background: #f8fafc;
+}
+
+th {
+  text-align: left;
+  padding: 15px 18px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: #64748b;
+  font-weight: 700;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+td {
+  padding: 16px 18px;
+  border-bottom: 1px solid #edf2f7;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+tbody tr:hover {
+  background: #f8fbff;
+}
+
+/* ================================
+   Patient
+================================ */
+
+.patient-name {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.patient-name strong {
+  color: #1e293b;
+  font-size: 14px;
+}
+
+.patient-name small {
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+.symptoms {
+  max-width: 220px;
+  color: #475569;
+}
+
+/* ================================
+   Priority
+================================ */
+
+.priority-badge {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.priority-badge.critical {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.priority-badge.high {
+  background: #ffedd5;
+  color: #c2410c;
+}
+
+.priority-badge.medium {
+  background: #fef9c3;
+  color: #a16207;
+}
+
+.priority-badge.low {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+/* ================================
+   Severity
+================================ */
+
+.severity {
+  color: #475569;
+  font-weight: 500;
+}
+
+/* ================================
+   View Button
+================================ */
+
+.view-btn {
+  border: none;
+  background: #e8f3fb;
+  color: #1769aa;
+  padding: 8px 14px;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.view-btn:hover {
+  background: #d6ebf8;
+}
+
+/* ================================
+   Loading / Error
+================================ */
+
+.loading,
+.error {
+  background: white;
+  padding: 30px;
+  text-align: center;
+  border-radius: 12px;
+}
+
+.loading {
+  color: #1769aa;
+}
+
+.error {
+  color: #dc2626;
+}
+
+/* ================================
+   No Data
+================================ */
+
+.no-data {
+  text-align: center;
+  padding: 40px;
+  color: #94a3b8;
+}
+
+/* ================================
+   Responsive
+================================ */
+
+@media (max-width: 1100px) {
+
+  .statistics {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+}
+
+@media (max-width: 700px) {
+
+  .doctor-dashboard {
+    padding: 20px;
+  }
+
+  .dashboard-header {
+    align-items: flex-start;
+    gap: 15px;
+    flex-direction: column;
+  }
+
+  .statistics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .section-header {
+    align-items: flex-start;
+    gap: 15px;
+    flex-direction: column;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+}
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.complete-btn {
+  border: none;
+  padding: 7px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #198754;
+  color: white;
+  font-size: 13px;
+}
+
+.complete-btn:hover {
+  background: #157347;
+}

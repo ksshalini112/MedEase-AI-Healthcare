@@ -1,0 +1,745 @@
+<div class="result-page">
+
+  <!-- ================================================= -->
+  <!-- LOADING -->
+  <!-- ================================================= -->
+
+  <section
+    class="loading-container"
+    *ngIf="loading"
+  >
+
+    <div class="loader"></div>
+
+    <h2>Preparing your results...</h2>
+
+    <p>
+      Please wait while we review your consultation
+      and uploaded reports.
+    </p>
+
+  </section>
+
+
+  <!-- ================================================= -->
+  <!-- ERROR -->
+  <!-- ================================================= -->
+
+  <section
+    class="error-container"
+    *ngIf="!loading && errorMessage"
+  >
+
+    <div class="error-icon">
+      !
+    </div>
+
+    <h2>Unable to load assessment</h2>
+
+    <p>
+      {{ errorMessage }}
+    </p>
+
+    <button
+      class="primary-button"
+      (click)="goToDashboard()"
+    >
+      Back to Dashboard
+    </button>
+
+  </section>
+
+
+  <!-- ================================================= -->
+  <!-- RESULT -->
+  <!-- ================================================= -->
+
+  <main
+    class="result-container"
+    *ngIf="!loading && !errorMessage && assessment"
+  >
+
+    <!-- ================================================= -->
+    <!-- HEADER -->
+    <!-- ================================================= -->
+
+    <section class="page-header">
+
+      <div>
+
+        <span class="eyebrow">
+          AI HEALTH ASSESSMENT
+        </span>
+
+        <h1>
+          Your Assessment Results
+        </h1>
+
+        <p>
+          Your consultation and available medical reports
+          have been reviewed together.
+        </p>
+
+      </div>
+
+      <button
+        class="secondary-button"
+        (click)="goToDashboard()"
+      >
+        Dashboard
+      </button>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- ALERT -->
+    <!-- ================================================= -->
+
+    <section
+      class="urgent-banner"
+      *ngIf="isUrgent"
+    >
+
+      <div class="urgent-icon">
+        !
+      </div>
+
+      <div>
+
+        <strong>
+          Medical review is recommended promptly
+        </strong>
+
+        <p>
+          Some findings in this assessment may require
+          timely professional evaluation.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- OVERVIEW CARDS -->
+    <!-- ================================================= -->
+
+    <section class="overview-grid">
+
+      <div class="overview-card">
+
+        <span class="card-label">
+          Priority
+        </span>
+
+        <strong
+          [class]="getPriorityClass()"
+        >
+          {{ priority }}
+        </strong>
+
+      </div>
+
+
+      <div class="overview-card">
+
+        <span class="card-label">
+          Severity
+        </span>
+
+        <strong>
+          {{ severity }}
+        </strong>
+
+      </div>
+
+
+      <div class="overview-card">
+
+        <span class="card-label">
+          Reports
+        </span>
+
+        <strong>
+          {{ reportCount }}
+        </strong>
+
+      </div>
+
+
+      <div class="overview-card">
+
+        <span class="card-label">
+          Status
+        </span>
+
+        <strong>
+          {{ status }}
+        </strong>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- CONSULTATION SUMMARY -->
+    <!-- ================================================= -->
+
+    <section class="section-card">
+
+      <div class="section-heading">
+
+        <div class="section-number">
+          01
+        </div>
+
+        <div>
+
+          <h2>
+            Consultation Summary
+          </h2>
+
+          <p>
+            Information recorded during your consultation.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="summary-box">
+
+        {{ clinicalSummary }}
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- POSSIBLE CONDITIONS -->
+    <!-- ================================================= -->
+
+    <section
+      class="section-card"
+      *ngIf="possibleConditions.length > 0"
+    >
+
+      <div class="section-heading">
+
+        <div class="section-number">
+          02
+        </div>
+
+        <div>
+
+          <h2>
+            Possible Conditions
+          </h2>
+
+          <p>
+            These are possibilities identified from the
+            available information, not confirmed diagnoses.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="condition-list">
+
+        <div
+          class="condition-card"
+          *ngFor="let condition of possibleConditions"
+        >
+
+          <h3>
+            {{ getConditionName(condition) }}
+          </h3>
+
+          <p
+            *ngIf="getConditionReason(condition)"
+          >
+            {{ getConditionReason(condition) }}
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- RECOMMENDED TESTS -->
+    <!-- ================================================= -->
+
+    <section
+      class="section-card"
+      *ngIf="recommendedTests.length > 0"
+    >
+
+      <div class="section-heading">
+
+        <div class="section-number">
+          03
+        </div>
+
+        <div>
+
+          <h2>
+            Recommended Tests
+          </h2>
+
+          <p>
+            Tests suggested from the assessment.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="test-list">
+
+        <div
+          class="test-item"
+          *ngFor="let test of recommendedTests"
+        >
+
+          <span class="check">
+            ✓
+          </span>
+
+          <span>
+            {{ getTestName(test) }}
+          </span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- REPORTS -->
+    <!-- ================================================= -->
+
+    <section
+      class="section-card"
+      *ngIf="reportSummary.length > 0"
+    >
+
+      <div class="section-heading">
+
+        <div class="section-number">
+          04
+        </div>
+
+        <div>
+
+          <h2>
+            Uploaded Medical Reports
+          </h2>
+
+          <p>
+            Individual values from your uploaded reports.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- =============================================== -->
+      <!-- EACH REPORT -->
+      <!-- =============================================== -->
+
+      <div
+        class="report-card"
+        *ngFor="let report of reportSummary"
+      >
+
+        <div class="report-header">
+
+          <div>
+
+            <span class="report-type">
+              {{ report.reportType }}
+            </span>
+
+            <h3>
+              {{ report.fileName }}
+            </h3>
+
+          </div>
+
+          <span
+            class="report-severity"
+          >
+            {{ report.severity }}
+          </span>
+
+        </div>
+
+
+        <!-- ============================================= -->
+        <!-- PATIENT MESSAGE -->
+        <!-- ============================================= -->
+
+        <div
+          class="patient-message"
+          *ngIf="report.patientMessage"
+        >
+
+          {{ report.patientMessage }}
+
+        </div>
+
+
+        <!-- ============================================= -->
+        <!-- VALUES -->
+        <!-- ============================================= -->
+
+        <div
+          class="values-list"
+          *ngIf="report.values?.length"
+        >
+
+          <div
+            class="value-card"
+            *ngFor="let value of report.values"
+            [class.abnormal]="
+              value.status === 'High' ||
+              value.status === 'Low'
+            "
+          >
+
+            <!-- VALUE HEADER -->
+
+            <div class="value-header">
+
+              <div>
+
+                <h4>
+                  {{ value.name }}
+                </h4>
+
+                <span class="reference">
+                  Reference:
+                  {{ value.referenceRange }}
+                </span>
+
+              </div>
+
+
+              <div class="result-value">
+
+                <strong>
+                  {{ value.value }}
+                  <small>
+                    {{ value.unit }}
+                  </small>
+                </strong>
+
+                <span
+                  class="status-badge"
+                  [ngClass]="getValueClass(value.status)"
+                >
+                  {{ getStatusLabel(value.status) }}
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <!-- ========================================= -->
+            <!-- EXPLANATION -->
+            <!-- ========================================= -->
+
+            <div
+              class="explanation"
+              *ngIf="
+                value.status === 'High' ||
+                value.status === 'Low'
+              "
+            >
+
+              <div class="explanation-row">
+
+                <div class="explanation-icon">
+                  ?
+                </div>
+
+                <div>
+
+                  <strong>
+                    Why may this happen?
+                  </strong>
+
+                  <p>
+                    {{
+                      getExplanation(value).whyItMayHappen
+                    }}
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <div class="explanation-row">
+
+                <div class="explanation-icon">
+                  i
+                </div>
+
+                <div>
+
+                  <strong>
+                    What may it mean?
+                  </strong>
+
+                  <p>
+                    {{
+                      getExplanation(value).whatItMayMean
+                    }}
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <div class="explanation-row">
+
+                <div class="explanation-icon">
+                  ✓
+                </div>
+
+                <div>
+
+                  <strong>
+                    What should you do?
+                  </strong>
+
+                  <p>
+                    {{
+                      getExplanation(value).whatToDo
+                    }}
+                  </p>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <!-- NORMAL -->
+
+            <div
+              class="normal-message"
+              *ngIf="value.status === 'Normal'"
+            >
+
+              ✓
+              {{
+                getExplanation(value).summary
+              }}
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- NO VALUES -->
+
+        <div
+          class="empty-values"
+          *ngIf="!report.values?.length"
+        >
+
+          No individual test values were available
+          from this report.
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- COMBINED FINDINGS -->
+    <!-- ================================================= -->
+
+    <section
+      class="section-card"
+      *ngIf="assessment.suspectedFindings?.length"
+    >
+
+      <div class="section-heading">
+
+        <div class="section-number">
+          05
+        </div>
+
+        <div>
+
+          <h2>
+            Combined Findings
+          </h2>
+
+          <p>
+            Findings identified across the available reports.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="finding-list">
+
+        <div
+          class="finding-item"
+          *ngFor="
+            let finding of assessment.suspectedFindings
+          "
+        >
+
+          <span>
+            •
+          </span>
+
+          {{ finding }}
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- COMBINED ASSESSMENT -->
+    <!-- ================================================= -->
+
+    <section
+      class="section-card"
+      *ngIf="combinedAssessment"
+    >
+
+      <div class="section-heading">
+
+        <div class="section-number">
+          06
+        </div>
+
+        <div>
+
+          <h2>
+            Complete Assessment
+          </h2>
+
+          <p>
+            Consultation and report information combined.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="combined-text">
+
+        {{ combinedAssessment }}
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- FINAL CONCLUSION -->
+    <!-- ================================================= -->
+
+    <section class="conclusion-card">
+
+      <div class="conclusion-icon">
+        ✓
+      </div>
+
+      <div>
+
+        <span class="eyebrow">
+          FINAL CONCLUSION
+        </span>
+
+        <h2>
+          What this means overall
+        </h2>
+
+        <p>
+          {{ finalConclusion }}
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- DISCLAIMER -->
+    <!-- ================================================= -->
+
+    <section class="disclaimer">
+
+      <strong>
+        Important
+      </strong>
+
+      <p>
+        This assessment is intended to help explain the
+        information available in your consultation and
+        medical reports. It does not replace a diagnosis
+        or examination by a qualified healthcare professional.
+      </p>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- ACTIONS -->
+    <!-- ================================================= -->
+
+    <div class="action-row">
+
+      <button
+        class="secondary-button"
+        (click)="goToDashboard()"
+      >
+        Back to Dashboard
+      </button>
+
+      <button
+        class="primary-button"
+        (click)="goToReports()"
+      >
+        View Reports
+      </button>
+
+    </div>
+
+  </main>
+
+</div>

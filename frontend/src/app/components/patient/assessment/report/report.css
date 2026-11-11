@@ -1,0 +1,456 @@
+/* =========================================
+   PAGE
+========================================= */
+
+.report-page {
+  min-height: 100vh;
+  background: #f4f8fb;
+  color: #17324d;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.report-header {
+  height: 76px;
+  padding: 0 6%;
+  background: #ffffff;
+  border-bottom: 1px solid #e2ebf0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #197db1;
+  color: #ffffff;
+
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.brand h1 {
+  margin: 0;
+  color: #163f5c;
+  font-size: 20px;
+}
+
+.brand p {
+  margin: 3px 0 0;
+  color: #8295a2;
+  font-size: 11px;
+}
+
+.back-dashboard-btn {
+  background: #ffffff;
+  border: 1px solid #d5e3e9;
+  color: #28749b;
+
+  padding: 9px 15px;
+  border-radius: 8px;
+
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.back-dashboard-btn:hover {
+  background: #edf7fa;
+}
+
+
+/* =========================================
+   MAIN CONTAINER
+========================================= */
+
+.report-container {
+  width: min(1000px, 90%);
+  margin: 35px auto;
+}
+
+
+/* =========================================
+   PAGE INTRO
+========================================= */
+
+.page-intro {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  margin-bottom: 22px;
+}
+
+.intro-icon {
+  width: 55px;
+  height: 55px;
+
+  border-radius: 13px;
+  background: #e5f3f8;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 25px;
+  flex-shrink: 0;
+}
+
+.page-intro h2 {
+  margin: 0 0 6px;
+  color: #244f68;
+  font-size: 23px;
+}
+
+.page-intro p {
+  margin: 0;
+  color: #748b99;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+
+/* =========================================
+   INFO BOX
+========================================= */
+
+.info-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+
+  padding: 16px 18px;
+  margin-bottom: 22px;
+
+  background: #edf8fc;
+  border: 1px solid #d2eaf3;
+  border-radius: 10px;
+}
+
+.info-icon {
+  width: 25px;
+  height: 25px;
+
+  border-radius: 50%;
+  background: #d7edf6;
+  color: #24789e;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 14px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.info-box p {
+  margin: 2px 0 0;
+  color: #547080;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+
+/* =========================================
+   REPORT LIST
+========================================= */
+
+.report-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.report-card {
+  background: #ffffff;
+  border: 1px solid #e0eaef;
+  border-radius: 12px;
+
+  padding: 18px 20px;
+
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  box-shadow: 0 4px 15px rgba(36, 79, 104, 0.04);
+}
+
+.report-icon {
+  width: 45px;
+  height: 45px;
+
+  border-radius: 10px;
+  background: #eef6f9;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 21px;
+  flex-shrink: 0;
+}
+
+.report-details {
+  flex: 1;
+}
+
+.report-details h3 {
+  margin: 0 0 5px;
+  color: #31566d;
+  font-size: 15px;
+}
+
+.report-status {
+  margin: 0;
+  font-size: 12px;
+}
+
+.pending {
+  color: #8b9ba5;
+}
+
+.skipped {
+  color: #a8783a;
+}
+
+.uploaded-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.status.uploaded {
+  color: #3b9367;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.uploaded-info small {
+  color: #80929d;
+  font-size: 11px;
+  word-break: break-all;
+}
+
+
+/* =========================================
+   ACTIONS
+========================================= */
+
+.report-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.report-actions button {
+  border-radius: 7px;
+  padding: 8px 13px;
+
+  font-size: 12px;
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.upload-btn {
+  border: none;
+  background: #197db1;
+  color: #ffffff;
+}
+
+.upload-btn:hover {
+  background: #126b99;
+}
+
+.skip-btn {
+  border: 1px solid #e0cba8;
+  background: #fffaf2;
+  color: #9a7237;
+}
+
+.skip-btn:hover {
+  background: #fff4e3;
+}
+
+.remove-btn {
+  border: 1px solid #edc9c9;
+  background: #fff5f5;
+  color: #b85252;
+}
+
+.remove-btn:hover {
+  background: #ffecec;
+}
+
+.reset-btn {
+  border: 1px solid #d4e1e7;
+  background: #ffffff;
+  color: #567181;
+}
+
+.reset-btn:hover {
+  background: #f3f8fa;
+}
+
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.empty-state {
+  background: #ffffff;
+  border: 1px dashed #d5e3e9;
+  border-radius: 12px;
+
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.empty-icon {
+  font-size: 35px;
+  margin-bottom: 10px;
+}
+
+.empty-state h3 {
+  margin: 0 0 7px;
+  color: #456174;
+}
+
+.empty-state p {
+  margin: 0;
+  color: #83939d;
+  font-size: 13px;
+}
+
+
+/* =========================================
+   CONTINUE SECTION
+========================================= */
+
+.continue-section {
+  margin-top: 24px;
+
+  background: #ffffff;
+  border: 1px solid #dfe9ee;
+  border-radius: 12px;
+
+  padding: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.continue-text h3 {
+  margin: 0 0 5px;
+  color: #31566d;
+  font-size: 16px;
+}
+
+.continue-text p {
+  margin: 0;
+  color: #7b909d;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.continue-btn {
+  flex-shrink: 0;
+
+  border: none;
+  background: #197db1;
+  color: #ffffff;
+
+  padding: 12px 19px;
+  border-radius: 8px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow: 0 5px 14px rgba(25, 125, 177, 0.16);
+}
+
+.continue-btn:hover {
+  background: #126b99;
+}
+
+
+/* =========================================
+   SECURITY
+========================================= */
+
+.security-note {
+  text-align: center;
+  color: #8b9aa3;
+
+  font-size: 11px;
+  margin-top: 25px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+  .report-header {
+    padding: 0 18px;
+  }
+
+  .back-dashboard-btn {
+    font-size: 10px;
+    padding: 8px 10px;
+  }
+
+  .report-container {
+    width: 92%;
+    margin-top: 25px;
+  }
+
+  .report-card {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .report-details {
+    min-width: 180px;
+  }
+
+  .report-actions {
+    width: 100%;
+    margin-left: 60px;
+  }
+
+  .continue-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .continue-btn {
+    width: 100%;
+  }
+
+}

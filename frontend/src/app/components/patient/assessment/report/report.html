@@ -1,0 +1,252 @@
+<div class="report-page">
+
+  <!-- HEADER -->
+  <header class="report-header">
+
+    <div class="brand">
+      <div class="logo">M</div>
+
+      <div>
+        <h1>MedEase AI</h1>
+        <p>Health Assessment</p>
+      </div>
+    </div>
+
+    <button
+      class="back-dashboard-btn"
+      (click)="goBack()"
+    >
+      ← Back to Assessment
+    </button>
+
+  </header>
+
+
+  <!-- MAIN -->
+  <main class="report-container">
+
+    <!-- PAGE TITLE -->
+    <section class="page-intro">
+
+      <div class="intro-icon">📄</div>
+
+      <div>
+        <h2>Recommended Reports</h2>
+
+        <p>
+          Based on your assessment, the following reports or test results
+          may help provide a more complete analysis.
+        </p>
+      </div>
+
+    </section>
+
+
+    <!-- INFORMATION -->
+    <div class="info-box">
+
+      <span class="info-icon">ℹ</span>
+
+      <p>
+        Upload any reports you currently have. If you do not have a
+        recommended report, you can skip it. Skipped reports will be marked
+        as <strong>Not Available</strong> in the final assessment.
+      </p>
+
+    </div>
+
+
+    <!-- EMPTY STATE -->
+    <div
+      class="empty-state"
+      *ngIf="recommendedTests.length === 0"
+    >
+
+      <div class="empty-icon">📋</div>
+
+      <h3>No reports recommended</h3>
+
+      <p>
+        No specific reports were recommended for your assessment.
+        You can continue to the final conclusion.
+      </p>
+
+    </div>
+
+
+    <!-- REPORT LIST -->
+    <section
+      class="report-list"
+      *ngIf="recommendedTests.length > 0"
+    >
+
+      <div
+        class="report-card"
+        *ngFor="let report of recommendedTests; let i = index"
+      >
+
+        <!-- REPORT ICON -->
+        <div class="report-icon">
+          📄
+        </div>
+
+
+        <!-- REPORT NAME -->
+        <div class="report-details">
+
+          <h3>
+            {{ report.name }}
+          </h3>
+
+          <!-- Pending -->
+          <p
+            class="report-status pending"
+            *ngIf="report.status === 'Pending'"
+          >
+            Waiting for upload or skip
+          </p>
+
+          <!-- Uploaded -->
+          <div
+            class="uploaded-info"
+            *ngIf="report.status === 'Uploaded'"
+          >
+
+            <span class="status uploaded">
+              ✓ Uploaded
+            </span>
+
+            <small>
+              {{ report.file?.name }}
+            </small>
+
+          </div>
+
+          <!-- Skipped -->
+          <p
+            class="report-status skipped"
+            *ngIf="report.status === 'Skipped'"
+          >
+            Not available / Skipped
+          </p>
+
+        </div>
+
+
+        <!-- ACTIONS -->
+        <div class="report-actions">
+
+          <!-- PENDING -->
+          <ng-container
+            *ngIf="report.status === 'Pending'"
+          >
+
+            <input
+              type="file"
+              accept=".pdf,.jpg,.jpeg,.png"
+              #fileInput
+              hidden
+              (change)="onFileSelected($event, i)"
+            />
+
+            <button
+              class="upload-btn"
+              (click)="fileInput.click()"
+            >
+              Upload
+            </button>
+
+            <button
+              class="skip-btn"
+              (click)="skipReport(i)"
+            >
+              Skip
+            </button>
+
+          </ng-container>
+
+
+          <!-- UPLOADED -->
+          <ng-container
+            *ngIf="report.status === 'Uploaded'"
+          >
+
+            <button
+              class="remove-btn"
+              (click)="removeFile(i)"
+            >
+              Remove
+            </button>
+
+          </ng-container>
+
+
+          <!-- SKIPPED -->
+          <ng-container
+            *ngIf="report.status === 'Skipped'"
+          >
+
+            <input
+              type="file"
+              accept=".pdf,.jpg,.jpeg,.png"
+              #replaceInput
+              hidden
+              (change)="onFileSelected($event, i)"
+            />
+
+            <button
+              class="upload-btn"
+              (click)="replaceInput.click()"
+            >
+              Upload Instead
+            </button>
+
+            <button
+              class="reset-btn"
+              (click)="resetReport(i)"
+            >
+              Undo Skip
+            </button>
+
+          </ng-container>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CONTINUE -->
+    <section class="continue-section">
+
+      <div class="continue-text">
+
+        <h3>Ready to continue?</h3>
+
+        <p>
+          Uploaded reports will be analyzed and combined with your
+          assessment. Skipped reports will be marked as unavailable.
+        </p>
+
+      </div>
+
+      <button
+        class="continue-btn"
+        (click)="continue()"
+      >
+        Continue to Final Conclusion →
+      </button>
+
+    </section>
+
+
+    <!-- SECURITY -->
+    <div class="security-note">
+      🔒 Your medical reports are securely processed and used only for your
+      health assessment.
+    </div>
+
+  </main>
+
+</div>

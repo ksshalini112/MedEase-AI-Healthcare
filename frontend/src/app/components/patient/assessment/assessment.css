@@ -1,0 +1,371 @@
+* {
+  box-sizing: border-box;
+}
+
+.assessment-page {
+  min-height: 100vh;
+  background: #f5f9fc;
+  color: #172b4d;
+}
+
+
+/* HEADER */
+
+.assessment-header {
+  height: 75px;
+  background: white;
+  border-bottom: 1px solid #e3edf2;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 6%;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.logo-circle {
+  width: 40px;
+  height: 40px;
+
+  border-radius: 50%;
+
+  background: #0d8abc;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.brand h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.brand span {
+  font-size: 12px;
+  color: #81909d;
+}
+
+.cancel-btn {
+  border: none;
+  background: transparent;
+  color: #718096;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+
+/* PROGRESS */
+
+.progress-container {
+  max-width: 900px;
+  margin: 35px auto 20px;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.progress-step {
+  text-align: center;
+  min-width: 120px;
+}
+
+.progress-step span {
+  width: 32px;
+  height: 32px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: auto;
+
+  background: #e3eaef;
+  color: #82909b;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.progress-step.active span {
+  background: #0d8abc;
+  color: white;
+}
+
+.progress-step p {
+  font-size: 11px;
+  color: #7b8b9a;
+  margin-top: 8px;
+}
+
+.progress-step.active p {
+  color: #0d8abc;
+  font-weight: 600;
+}
+
+.progress-line {
+  width: 70px;
+  height: 1px;
+  background: #dce5ea;
+  margin-top: 16px;
+}
+
+
+/* CARD */
+
+.assessment-card {
+  width: 90%;
+  max-width: 900px;
+
+  margin: 25px auto 50px;
+
+  background: white;
+
+  border-radius: 16px;
+
+  padding: 40px;
+
+  border: 1px solid #e1eaf0;
+
+  box-shadow: 0 5px 25px rgba(0, 70, 100, 0.05);
+}
+
+.card-heading {
+  border-bottom: 1px solid #edf1f4;
+  padding-bottom: 25px;
+}
+
+.step-label {
+  color: #0d8abc;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.card-heading h1 {
+  margin: 10px 0 8px;
+  font-size: 27px;
+}
+
+.card-heading p {
+  margin: 0;
+  color: #718096;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+
+/* SECTIONS */
+
+.section {
+  padding: 28px 0;
+  border-bottom: 1px solid #edf1f4;
+}
+
+.section h3 {
+  margin: 0 0 6px;
+  font-size: 17px;
+}
+
+.section-description {
+  color: #81909d;
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+
+
+/* FORM */
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-top: 18px;
+}
+
+.input-group label,
+.pregnancy-question > label {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.input-group label span {
+  color: #e53935;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+
+  border: 1px solid #d9e3e9;
+
+  border-radius: 8px;
+
+  padding: 11px 13px;
+
+  font-family: inherit;
+
+  font-size: 13px;
+
+  outline: none;
+
+  background: white;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #0d8abc;
+  box-shadow: 0 0 0 3px rgba(13, 138, 188, 0.08);
+}
+
+textarea {
+  resize: vertical;
+}
+
+
+/* PREGNANCY */
+
+.pregnancy-question {
+  margin-top: 18px;
+}
+
+.radio-group {
+  display: flex;
+  gap: 25px;
+  margin-top: 12px;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.radio-option input {
+  width: auto;
+}
+
+
+/* PRIVACY */
+
+.privacy-note {
+  display: flex;
+  gap: 12px;
+
+  background: #f0f8fb;
+
+  border-radius: 8px;
+
+  padding: 13px 15px;
+
+  margin-top: 25px;
+}
+
+.privacy-note span {
+  font-size: 17px;
+}
+
+.privacy-note p {
+  margin: 0;
+  color: #607d8b;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+
+/* ACTIONS */
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 30px;
+}
+
+.back-btn {
+  border: none;
+  background: transparent;
+
+  color: #718096;
+
+  cursor: pointer;
+
+  font-size: 13px;
+}
+
+.continue-btn {
+  border: none;
+
+  background: #0d8abc;
+  color: white;
+
+  padding: 12px 22px;
+
+  border-radius: 8px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.continue-btn span {
+  margin-left: 8px;
+  font-size: 17px;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 700px) {
+
+  .progress-container {
+    padding: 0 10px;
+  }
+
+  .progress-line {
+    width: 25px;
+  }
+
+  .progress-step {
+    min-width: 70px;
+  }
+
+  .progress-step p {
+    font-size: 9px;
+  }
+
+  .assessment-card {
+    padding: 25px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
